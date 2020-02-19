@@ -15,8 +15,9 @@ uint8_t notation_to_index(char file, char rank){
 char get_piece_at(uint8_t i){
 	if(IS_SET(king_pos, i)){
 		return 'K';
+	}else{
+		return ' ';
 	}
-	return ' ';
 }
 
 void display_board(){
@@ -25,11 +26,11 @@ void display_board(){
 	for(i = 0; i < 8; i++) {
 		printf("%d |", 8-i);
 		for(j = 0; j < 8; j++) {
-			printf("%c |", get_piece_at(i*8+j));
+			printf(" %c |", get_piece_at(i*8+j));
 		}
 		printf("\n ----------------------------------\n");
 	}
-	printf("   a   b   c   d   e   f   g   h\n");
+	printf("    a   b   c   d   e   f   g   h\n");
 	printf("\n");
 }
 

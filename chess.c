@@ -8,9 +8,9 @@ unsigned int make_move (Move m){
 	if(!IS_SET(king_pos, m.from)){
 		return 0;
 	}
-	if(m.to != NORTH_OF(m.from) || m.to != SOUTH_OF(m.from) || m.to != EAST_OF(m.from) || m.to != WEST_OF(m.from) || m.to != SE_OF(m.from) || m.to !=  SW_OF(m.from) || m.to != NE_OF(m.from) || m.to != NW_OF(m.from)){
+	/*if(m.to ! NORTH_OF(m.from) || m.to != SOUTH_OF(m.from) || m.to != EAST_OF(m.from) || m.to != WEST_OF(m.from) || m.to != SE_OF(m.from) || m.to !=  SW_OF(m.from) || m.to != NE_OF(m.from) || m.to != NW_OF(m.from)){
 		return 0;
-	}
+	}*/
 	CLEAR_BIT(king_pos, m.from);
 	SET_BIT(king_pos, m.to);
 	return 1;

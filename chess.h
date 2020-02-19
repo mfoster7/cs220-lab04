@@ -9,8 +9,8 @@
 
 #define NORTH_OF(i) (((i) > 63) || ((i) < 8))? INVALID_INDEX : ((i) - 8)
 #define SOUTH_OF(i) (((i) > 55) || ((i) < 0))? INVALID_INDEX : ((i) + 8)
-#define EAST_OF(i) (((i) % 7 = 0))? INVALID_INDEX : ((i) + 1)
-#define WEST_OF(i) (((i) % 8 = 0))? INVALID_INDEX : ((i) - 1)
+#define EAST_OF(i) ((((i + 1) % 7) < 1))? INVALID_INDEX : ((i) + 1)
+#define WEST_OF(i) ((((i + 1) % 8) < 1))? INVALID_INDEX : ((i) - 1)
 #define SE_OF(i) SOUTH_OF(EAST_OF(i))
 #define SW_OF(i) SOUTH_OF(WEST_OF(i))
 #define NE_OF(i) NORTH_OF(EAST_OF(i))

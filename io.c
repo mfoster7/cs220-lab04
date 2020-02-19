@@ -2,15 +2,13 @@
 #include <stdint.h>
 #include "chess.h"
 
-uint8_t INVALID_INDEX = 0xFF;
-
 uint8_t notation_to_index(char file, char rank){
 	uint8_t index;
 	if(file < 'a' || file > 'h' || rank < '1' || rank > '8'){
 		return INVALID_INDEX;
 	}
 	index = (8 - (rank - '0')) * 8 + file - 'a';
-	printf("%d\n", index);
+	/*printf("%d\n", index);*/
 	return index;
 }
 
@@ -27,7 +25,7 @@ void display_board(){
 	for(i = 0; i < 8; i++) {
 		printf("%d |", 8-i);
 		for(j = 0; j < 8; j++) {
-			printf("%c |" get_piece_at(i*8+j));
+			printf("%c |", get_piece_at(i*8+j));
 		}
 		printf("\n ----------------------------------\n");
 	}
@@ -46,12 +44,14 @@ Move get_move(){
 			printf("Try again.\n");
 		}
 		
-		error == 0;
+		error = 0;
 
 		printf("Enter move: ");
 		fgets(s, 127, stdin);
 
 		s[5] = '\0';
+
+		printf("s[0] = %c, s[1] = %c, s[2] = %c, s[3] = %c, s[4] = %c\n", s[0],s[1],s[2],s[3],s[4]);
 
 		m.from = notation_to_index(s[0], s[1]);
 		if(m.from == INVALID_INDEX){

@@ -5,11 +5,10 @@
 uint64_t king_pos = 0;
 
 unsigned int make_move (Move m){
-	if(!IS_SET(king_pos, m)){
+	if(!IS_SET(king_pos, m.from)){
 		return 0;
 	}
-	if(m.to != NORTH_OF(m.from) || SOUTH_OF(m.from) || EAST_OF(m.from) ||
-	WEST_OF(m.from) || SE_OF(m.from) || SW_OF(m.from) || NE_OF(m.from) || NW_OF(m.from)){
+	if(m.to != NORTH_OF(m.from) || m.to != SOUTH_OF(m.from) || m.to != EAST_OF(m.from) || m.to != WEST_OF(m.from) || m.to != SE_OF(m.from) || m.to !=  SW_OF(m.from) || m.to != NE_OF(m.from) || m.to != NW_OF(m.from)){
 		return 0;
 	}
 	CLEAR_BIT(king_pos, m.from);
@@ -24,6 +23,7 @@ int main(){
 	Move m = {INVALID_INDEX, INVALID_INDEX};
 
 	printf("Enter initial king position: ");
+
 	fgets(s, 127, stdin);
 	index = notation_to_index(s[0], s[1]);
 	if(index == INVALID_INDEX){
